@@ -26,6 +26,7 @@ for BUILD_TARGET in $BUILDS; do
 	rm -rf "$BUILD_DIR/"*
 	rm -rf "$BUILD_DIR.zip"
 	godot --path ../godot --headless --export-release "$BUILD" "../build/$BUILD_DIR/$BUILD_FILE"
+	cp -r ../license "$BUILD_DIR/"
 	zip -r "$BUILD_DIR.zip" "$BUILD_DIR/"
 done
 
