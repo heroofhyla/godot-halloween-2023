@@ -1,18 +1,15 @@
 #!/bin/bash
 
 SCRIPT_PATH=$(readlink -f "$0")
-echo "Script path is $SCRIPT_PATH"
 SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
-echo "SCRIPT_DIR is $SCRIPT_DIR"
 cd "$SCRIPT_DIR"
 
 source config.sh
-echo "ACCOUNT is $ACCOUNT"
-echo "GAME is $GAME"
-echo "BUILDS are $BUILDS"
 
 mkdir -p ../build
 cd ../build
+
+git describe > ../version.txt
 
 echo "Generating builds"
 for BUILD_TARGET in $BUILDS; do
@@ -27,6 +24,7 @@ for BUILD_TARGET in $BUILDS; do
 	rm -rf "$BUILD_DIR.zip"
 	godot --path ../godot --headless --export-release "$BUILD" "../build/$BUILD_DIR/$BUILD_FILE"
 	cp -r ../license "$BUILD_DIR/"
+	cp ../version.txt "$BUILD_DIR/"
 	zip -r "$BUILD_DIR.zip" "$BUILD_DIR/"
 done
 
