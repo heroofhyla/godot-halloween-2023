@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://sqsgtmdw8x7s"]
+[gd_scene load_steps=12 format=3 uid="uid://sqsgtmdw8x7s"]
 
 [ext_resource type="PackedScene" uid="uid://cl2a58cjibrcp" path="res://player/player.tscn" id="1_esvkg"]
 [ext_resource type="TileSet" uid="uid://nt46vdtko4ic" path="res://tiles/tileset.tres" id="1_jex2m"]
@@ -6,9 +6,17 @@
 [ext_resource type="SpriteFrames" uid="uid://dcdycihadohwn" path="res://powered_gate/powered_gate.tres" id="4_8l4d1"]
 [ext_resource type="PackedScene" uid="uid://c0tmw4il8es7e" path="res://interactable/interactable.tscn" id="4_g5223"]
 [ext_resource type="Texture2D" uid="uid://7gh7bufkqv1i" path="res://control_panel/control_panel.png" id="5_bjv07"]
+[ext_resource type="Script" path="res://fuse_crate.gd" id="7_rs3qf"]
+[ext_resource type="Texture2D" uid="uid://dglwp12qmm1ye" path="res://crate.png" id="8_4jau8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ck6fg"]
 size = Vector2(48, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxr2l"]
+size = Vector2(14, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwfdj"]
+size = Vector2(18, 16)
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -43,7 +51,7 @@ position = Vector2(360, 80)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BrokenGate/Gate"]
 position = Vector2(0, -16)
 sprite_frames = ExtResource("4_8l4d1")
-animation = &"fail_opening"
+animation = &"closed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BrokenGate/Gate"]
 position = Vector2(0, -8)
@@ -55,3 +63,23 @@ position = Vector2(391, 80)
 [node name="Sprite2D" type="Sprite2D" parent="BrokenGate/ControlPanel"]
 position = Vector2(0, -16)
 texture = ExtResource("5_bjv07")
+
+[node name="FuseCrate" type="StaticBody2D" parent="."]
+position = Vector2(152, 92)
+script = ExtResource("7_rs3qf")
+
+[node name="Sprite2D" type="Sprite2D" parent="FuseCrate"]
+position = Vector2(0, -11)
+texture = ExtResource("8_4jau8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FuseCrate"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_hxr2l")
+
+[node name="Interactable" parent="FuseCrate" instance=ExtResource("4_g5223")]
+
+[node name="CollisionShape2D" parent="FuseCrate/Interactable" index="0"]
+position = Vector2(1, -4)
+shape = SubResource("RectangleShape2D_jwfdj")
+
+[editable path="FuseCrate/Interactable"]
