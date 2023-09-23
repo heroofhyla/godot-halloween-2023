@@ -13,6 +13,8 @@ func _on_ControlPanel_activated():
 			await $Gate/AnimatedSprite2D.animation_finished
 			event_progress = POWER_OUT
 		elif event_progress == POWER_OUT:
-			await Cutscene.show_message("NOTHING HAPPENED")
-			await Cutscene.show_message("THE FUSE HAS BLOWN")
+			await Cutscene.show_messages([
+				"NOTHING HAPPENED",
+				"THE FUSE HAS BLOWN"
+			])
 	)

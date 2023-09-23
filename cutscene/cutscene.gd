@@ -1,8 +1,11 @@
 class_name CutscenePlayer
 extends Control
 
-enum {IDLE, BUSY, SHOWING_MESSAGE}
+const SEC_PER_CHAR :float = 0.05
+
+enum {IDLE, BUSY, TYPING_MESSAGE, SHOWING_MESSAGE}
 var state: int = IDLE
+var tween: Tween = null
 
 signal cutscene_started
 signal message_finished
@@ -15,6 +18,10 @@ func start_sync(lambda: Callable):
 	await lambda.call()
 	state = IDLE
 
+func show_messages(messages: Array):
+	for message in messages:
+		await show_message(message)
+
 func show_message(message: String):
 	await show_message_internal(message).message_finished
 
@@ -22,14 +29,27 @@ func show_message_internal(message: String) -> CutscenePlayer:
 	print("show_message")
 	%TextBoxBG.visible = true
 	%TextBoxLabel.text = message
-	state = SHOWING_MESSAGE
+	state = TYPING_MESSAGE
 	cutscene_started.emit()
+	var message_time = message.length() * SEC_PER_CHAR
+	%TextBoxLabel.visible_characters = 0
+	tween = get_tree().create_tween()
+	tween.tween_property(%TextBoxLabel, "visible_characters", message.length(), message_time)
+	tween.finished.connect(_on_text_tween_complete)
 	return self
 
+func _on_text_tween_complete():
+	state = SHOWING_MESSAGE
+
 func _input(event: InputEvent):
-	if event.is_action_pressed("interact") and state == SHOWING_MESSAGE:
-		print("hide_message")
-		state = IDLE
-		%TextBoxBG.visible = false
-		get_viewport().set_input_as_handled()
-		message_finished.emit()
+	if event.is_action_pressed("interact"):
+		if state == TYPING_MESSAGE:
+			tween.kill()
+			%TextBoxLabel.visible_characters = -1
+			state = SHOWING_MESSAGE
+		elif state == SHOWING_MESSAGE:
+			print("hide_message")
+			state = IDLE
+			%TextBoxBG.visible = false
+			get_viewport().set_input_as_handled()
+			message_finished.emit()
