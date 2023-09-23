@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://cl2a58cjibrcp"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_q3vtt"]
+[ext_resource type="Texture2D" uid="uid://bnrcvwvhuqr3x" path="res://player/player.png" id="2_k8gp3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikj0l"]
+atlas = ExtResource("2_k8gp3")
+region = Rect2(10, 0, 10, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrai2"]
+atlas = ExtResource("2_k8gp3")
+region = Rect2(0, 0, 10, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7hig"]
+atlas = ExtResource("2_k8gp3")
+region = Rect2(10, 60, 10, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0apk"]
+atlas = ExtResource("2_k8gp3")
+region = Rect2(10, 30, 10, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfjni"]
+atlas = ExtResource("2_k8gp3")
+region = Rect2(0, 30, 10, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f06tw"]
+atlas = ExtResource("2_k8gp3")
+region = Rect2(0, 60, 10, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d6qb6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikj0l")
+}],
+"loop": true,
+"name": &"stand_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrai2")
+}],
+"loop": true,
+"name": &"stand_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7hig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0apk")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfjni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f06tw")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3js8c"]
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_q3vtt")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -14)
+sprite_frames = SubResource("SpriteFrames_d6qb6")
+animation = &"stand_right"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 6, -6, 0, 0, -6, 6, 0)
+
+[node name="InteractableDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableDetector"]
+shape = SubResource("CircleShape2D_3js8c")

@@ -1,0 +1,21 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://do1l60j8jupyc"
+path="res://.godot/imported/sprite_font.png-0ccca924fc3b67d1baf2cc847108ebb9.fontdata"
+
+[deps]
+
+source_file="res://font/sprite_font.png"
+dest_files=["res://.godot/imported/sprite_font.png-0ccca924fc3b67d1baf2cc847108ebb9.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("0-127")
+columns=16
+rows=8
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+fallbacks=[]
+compress=true

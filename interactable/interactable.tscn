@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0tmw4il8es7e"]
+
+[ext_resource type="Script" path="res://interactable/interactable.gd" id="1_kvmi4"]
+[ext_resource type="Texture2D" uid="uid://dg58km4uaxomo" path="res://interactable/interact_hint.png" id="2_hn112"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6f1i5"]
+size = Vector2(8, 8)
+
+[node name="Interactable" type="Area2D"]
+script = ExtResource("1_kvmi4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_6f1i5")
+
+[node name="InteractHint" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(1, -30)
+texture = ExtResource("2_hn112")

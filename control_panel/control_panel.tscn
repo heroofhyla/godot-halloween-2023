@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3lvqirrfdkkg"]
+
+[ext_resource type="PackedScene" uid="uid://c0tmw4il8es7e" path="res://interactable/interactable.tscn" id="3_s747f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4nskj"]
+size = Vector2(10, 5)
+
+[node name="ControlPanel" type="Node2D"]
+
+[node name="Interactable" parent="." instance=ExtResource("3_s747f")]
+
+[node name="CollisionShape2D" parent="Interactable" index="0"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_4nskj")
+
+[node name="Activatable" type="Node2D" parent="."]
+
+[editable path="Interactable"]
