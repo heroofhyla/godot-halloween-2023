@@ -19,7 +19,7 @@ func _on_ControlPanel_activated():
 			GlobalVars.broken_gate_progress = POWER_OUT
 		elif GlobalVars.broken_gate_progress == POWER_OUT:
 			if GlobalVars.found_fuse:
-				await Cutscene.show_message("You replaced the fuse.")
+				await Cutscene.show_message("You replaced thegit status fuse.")
 				GlobalVars.broken_gate_progress = POWER_RESTORED
 			else:
 				await Cutscene.show_messages([
