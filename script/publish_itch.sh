@@ -10,5 +10,5 @@ cd ../build
 
 for BUILD_TARGET in $BUILDS; do
 	BUILD=$(echo "$BUILD_TARGET" | cut -d: -f1)
-	butler -i ../cred/itch.cred push $GAME-BUILD $ACCOUNT/$GAME:$BUILD --userversion-file $GAME-$BUILD/version.txt --dry-run
+	butler -i ../cred/itch.cred push $GAME-$BUILD $ACCOUNT/$GAME:$BUILD --userversion-file $GAME-$BUILD/version.txt --dry-run
 done
