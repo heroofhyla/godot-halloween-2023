@@ -6,8 +6,8 @@ func _ready():
 func _on_Interactable_activated():
 	Cutscene.start_sync(func():
 		if GlobalVars.found_fuse:
-			await Cutscene.show_message("THE CRATE IS EMPTY")
+			await Cutscene.show_message("The crate is empty.")
 		else:
-			await Cutscene.show_message("YOU FOUND A FUSE IN THE CRATE")
+			await Cutscene.show_message("You found a fuse in the\ncrate.")
 			GlobalVars.found_fuse = true
 	)

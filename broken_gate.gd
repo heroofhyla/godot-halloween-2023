@@ -19,12 +19,12 @@ func _on_ControlPanel_activated():
 			GlobalVars.broken_gate_progress = POWER_OUT
 		elif GlobalVars.broken_gate_progress == POWER_OUT:
 			if GlobalVars.found_fuse:
-				await Cutscene.show_message("YOU REPLACED THE FUSE.")
+				await Cutscene.show_message("You replaced the fuse.")
 				GlobalVars.broken_gate_progress = POWER_RESTORED
 			else:
 				await Cutscene.show_messages([
-					"NOTHING HAPPENED",
-					"THE FUSE HAS BLOWN"
+					"Nothing happened.",
+					"The fuse has blown."
 				])
 		elif GlobalVars.broken_gate_progress == POWER_RESTORED:
 			$Gate/AnimatedSprite2D.play("opening")
@@ -32,5 +32,5 @@ func _on_ControlPanel_activated():
 			$Gate/CollisionShape2D.disabled = true
 			GlobalVars.broken_gate_progress = GATE_OPENED
 		elif GlobalVars.broken_gate_progress == GATE_OPENED:
-			await Cutscene.show_message("THE GATE IS ALREADY OPEN.")
+			await Cutscene.show_message("The gate is already open.")
 	)
