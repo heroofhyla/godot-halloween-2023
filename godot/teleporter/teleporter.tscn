@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://jwk4rvmd4n2x"]
+
+[ext_resource type="Script" path="res://room/teleporter.gd" id="1_1acqk"]
+[ext_resource type="PackedScene" uid="uid://ce0gxns0c1djf" path="res://touch_trigger/touch_trigger.tscn" id="2_lykqi"]
+
+[node name="Teleporter" type="Node2D"]
+script = ExtResource("1_1acqk")
+
+[node name="TouchTrigger" parent="." instance=ExtResource("2_lykqi")]

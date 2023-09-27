@@ -8,9 +8,20 @@ var facing = FACE_RIGHT
 var interactables: Array = []
 
 func _ready():
+	EventBus.room_changing.connect(_on_EventBus_room_changing)
 	$InteractableDetector.area_entered.connect(_on_InteractableDetector_area_entered)
 	$InteractableDetector.area_exited.connect(_on_InteractableDetector_area_exited)
 	Cutscene.cutscene_started.connect(_on_Cutscene_cutscene_started)
+	if owner and owner.has_node("TeleportTargets") and GlobalVars.teleport_target:
+		global_position = owner.get_node("TeleportTargets/%s" % GlobalVars.teleport_target).global_position
+	facing = GlobalVars.player_facing
+	if facing == FACE_RIGHT:
+		$AnimatedSprite2D.play("stand_right")
+	else:
+		$AnimatedSprite2D.play("stand_left")
+
+func _on_EventBus_room_changing():
+	GlobalVars.player_facing = facing
 
 func _on_Cutscene_cutscene_started():
 	if facing == FACE_RIGHT:
@@ -28,6 +39,8 @@ func _on_InteractableDetector_area_entered(area: Area2D):
 	if area is Interactable:
 		interactables.push_back(area)
 		EventBus.top_interactable_changed.emit(area)
+	elif area is TouchTrigger:
+		area.interact()
 
 func _on_InteractableDetector_area_exited(area: Area2D):
 	cleanup_interactables()

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce0gxns0c1djf"]
+
+[ext_resource type="Script" path="res://touch_trigger/touch_trigger.gd" id="1_2qcxt"]
+
+[node name="TouchTrigger" type="Area2D"]
+script = ExtResource("1_2qcxt")
