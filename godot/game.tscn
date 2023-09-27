@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://cl2a58cjibrcp" path="res://player/player.tscn" id="1_esvkg"]
 [ext_resource type="TileSet" uid="uid://nt46vdtko4ic" path="res://tiles/tileset.tres" id="1_jex2m"]
-[ext_resource type="Script" path="res://broken_gate.gd" id="3_dsebj"]
 [ext_resource type="SpriteFrames" uid="uid://dcdycihadohwn" path="res://powered_gate/powered_gate.tres" id="4_8l4d1"]
 [ext_resource type="PackedScene" uid="uid://c0tmw4il8es7e" path="res://interactable/interactable.tscn" id="4_g5223"]
 [ext_resource type="Texture2D" uid="uid://7gh7bufkqv1i" path="res://control_panel/control_panel.png" id="5_bjv07"]
-[ext_resource type="Script" path="res://fuse_crate.gd" id="7_rs3qf"]
+[ext_resource type="Script" path="res://broken_gate_steps.gd" id="7_fe3eu"]
 [ext_resource type="Texture2D" uid="uid://dglwp12qmm1ye" path="res://crate.png" id="8_4jau8"]
+[ext_resource type="Script" path="res://fuse_crate.gd" id="8_tbj4m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ck6fg"]
 size = Vector2(48, 16)
@@ -43,7 +43,6 @@ position = Vector2(260, 118)
 
 [node name="BrokenGate" type="Node2D" parent="."]
 y_sort_enabled = true
-script = ExtResource("3_dsebj")
 
 [node name="Gate" type="StaticBody2D" parent="BrokenGate"]
 position = Vector2(360, 80)
@@ -57,16 +56,19 @@ animation = &"closed"
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_ck6fg")
 
-[node name="ControlPanel" parent="BrokenGate" instance=ExtResource("4_g5223")]
+[node name="ControlPanel" type="Sprite2D" parent="BrokenGate"]
+position = Vector2(391, 80)
+texture = ExtResource("5_bjv07")
+offset = Vector2(0, -16)
+
+[node name="Interactable" parent="BrokenGate" instance=ExtResource("4_g5223")]
 position = Vector2(391, 80)
 
-[node name="Sprite2D" type="Sprite2D" parent="BrokenGate/ControlPanel"]
-position = Vector2(0, -16)
-texture = ExtResource("5_bjv07")
+[node name="CutsceneSteps" type="Node" parent="BrokenGate"]
+script = ExtResource("7_fe3eu")
 
 [node name="FuseCrate" type="StaticBody2D" parent="."]
 position = Vector2(152, 92)
-script = ExtResource("7_rs3qf")
 
 [node name="Sprite2D" type="Sprite2D" parent="FuseCrate"]
 position = Vector2(0, -11)
@@ -75,6 +77,9 @@ texture = ExtResource("8_4jau8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FuseCrate"]
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_hxr2l")
+
+[node name="CutsceneSteps" type="Node" parent="FuseCrate"]
+script = ExtResource("8_tbj4m")
 
 [node name="Interactable" parent="FuseCrate" instance=ExtResource("4_g5223")]
 
