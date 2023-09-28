@@ -1,10 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://d08tnlyvhoqg0"]
+[gd_scene load_steps=2 format=3 uid="uid://d08tnlyvhoqg0"]
 
 [ext_resource type="PackedScene" uid="uid://d37bvh3xoepfd" path="res://room/room.tscn" id="1_krqor"]
-[ext_resource type="PackedScene" uid="uid://clks48jwuih2y" path="res://teleporter/teleporter.tscn" id="2_k0udf"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_embd7"]
-size = Vector2(8, 64)
 
 [node name="Kitchen" instance=ExtResource("1_krqor")]
 
@@ -17,16 +13,3 @@ position = Vector2(119, 60)
 
 [node name="EastEntrance" type="Marker2D" parent="TeleportTargets" index="0"]
 position = Vector2(210, 63)
-
-[node name="Teleporter" parent="." index="3" instance=ExtResource("2_k0udf")]
-position = Vector2(238, 61)
-
-[node name="CollisionShape2D" parent="Teleporter" index="0"]
-position = Vector2(1, 19)
-shape = SubResource("RectangleShape2D_embd7")
-
-[node name="TeleportBehavior" parent="Teleporter" index="2"]
-target_map = "res://room/hallway.tscn"
-teleport_target = "WestEntrance"
-
-[editable path="Teleporter"]

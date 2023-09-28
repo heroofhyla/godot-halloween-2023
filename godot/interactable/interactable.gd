@@ -6,6 +6,7 @@ extends Area2D
 @export var activate_siblings: bool = false
 @export var activate_parent: bool = false
 @export var activate_owner: bool = false
+@export var activate_self: bool = true
 @export var activate_additional: Array[Node]
 signal activated
 
@@ -23,13 +24,23 @@ func interact():
 		get_parent().activate()
 	if activate_owner and owner != null and owner.has_method("activate"):
 		owner.activate()
+	if activate_self:
+		activate()
+
 	for node in activate_additional:
 		if node.has_method("activate"):
 			node.activate()
 
+func activate():
+	pass
+
 func _ready():
-	$InteractHint.visible = false
+	if Engine.is_editor_hint():
+		return
+	if has_node("InteractHint"):
+		$InteractHint.visible = false
 	EventBus.top_interactable_changed.connect(_on_EventBus_top_interactable_changed)
 
 func _on_EventBus_top_interactable_changed(top_interactable: Interactable):
-	$InteractHint.visible = (top_interactable == self)
+	if has_node("InteractHint"):
+		$InteractHint.visible = (top_interactable == self)

@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://ynv1yawrp1f1"]
 
 [ext_resource type="PackedScene" uid="uid://d37bvh3xoepfd" path="res://room/room.tscn" id="1_1kdhu"]
-[ext_resource type="PackedScene" uid="uid://clks48jwuih2y" path="res://teleporter/teleporter.tscn" id="2_j7mxn"]
+[ext_resource type="PackedScene" uid="uid://dph1f2ff2gs1n" path="res://teleporter/teleporter.tscn" id="2_j7mxn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qs0p"]
-size = Vector2(8, 64)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsity"]
+size = Vector2(10, 59)
 
 [node name="Hallway" instance=ExtResource("1_1kdhu")]
 
@@ -15,31 +15,15 @@ layer_1/tile_data = PackedInt32Array(262144, 1, 0, 327680, 1, 0, 393216, 1, 0, 4
 [node name="Player" parent="." index="1"]
 position = Vector2(125, 78)
 
-[node name="KitchenTeleporter" parent="." index="2" instance=ExtResource("2_j7mxn")]
-position = Vector2(0, 91)
-
-[node name="CollisionShape2D" parent="KitchenTeleporter" index="0"]
-shape = SubResource("RectangleShape2D_3qs0p")
-
-[node name="TeleportBehavior" parent="KitchenTeleporter" index="2"]
-target_map = "res://room/kitchen.tscn"
-teleport_target = "EastEntrance"
-
-[node name="ParlorTeleporter" parent="." index="3" instance=ExtResource("2_j7mxn")]
-position = Vector2(240, 92)
-
-[node name="CollisionShape2D" parent="ParlorTeleporter" index="0"]
-shape = SubResource("RectangleShape2D_3qs0p")
-
-[node name="TeleportBehavior" parent="ParlorTeleporter" index="2"]
-target_map = "res://room/parlor.tscn"
-teleport_target = "WestEntrance"
-
 [node name="WestEntrance" type="Marker2D" parent="TeleportTargets" index="0"]
 position = Vector2(26, 81)
 
 [node name="EastEntrance" type="Marker2D" parent="TeleportTargets" index="1"]
 position = Vector2(210, 80)
 
-[editable path="KitchenTeleporter"]
-[editable path="ParlorTeleporter"]
+[node name="Teleporter" parent="." index="3" instance=ExtResource("2_j7mxn")]
+position = Vector2(13, 77)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter" index="0"]
+position = Vector2(-7, 16)
+shape = SubResource("RectangleShape2D_jsity")

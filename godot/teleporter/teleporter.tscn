@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://clks48jwuih2y"]
+[gd_scene load_steps=3 format=3 uid="uid://dph1f2ff2gs1n"]
 
 [ext_resource type="PackedScene" uid="uid://c0tmw4il8es7e" path="res://interactable/interactable.tscn" id="1_xwiir"]
-[ext_resource type="Script" path="res://teleporter/teleport_behavior.gd" id="2_cqro6"]
+[ext_resource type="Script" path="res://teleporter/teleporter.gd" id="2_o6he2"]
 
 [node name="Teleporter" instance=ExtResource("1_xwiir")]
-
-[node name="TeleportBehavior" type="Node" parent="." index="2"]
-script = ExtResource("2_cqro6")
+script = ExtResource("2_o6he2")
+target_map = ""
+teleport_target = ""
+activate_children = false

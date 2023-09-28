@@ -1,13 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6rrh83tw5u7y"]
+[gd_scene load_steps=2 format=3 uid="uid://c6rrh83tw5u7y"]
 
 [ext_resource type="PackedScene" uid="uid://d37bvh3xoepfd" path="res://room/room.tscn" id="1_tkru7"]
-[ext_resource type="PackedScene" uid="uid://clks48jwuih2y" path="res://teleporter/teleporter.tscn" id="2_xakkq"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7y1b"]
-size = Vector2(32, 8)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_37ktu"]
-size = Vector2(9, 64)
 
 [node name="Room" instance=ExtResource("1_tkru7")]
 
@@ -23,27 +16,3 @@ position = Vector2(22, 119)
 
 [node name="NorthEntrance" type="Marker2D" parent="TeleportTargets" index="1"]
 position = Vector2(192, 25)
-
-[node name="Teleporter" parent="." index="3" instance=ExtResource("2_xakkq")]
-position = Vector2(188, 11)
-
-[node name="CollisionShape2D" parent="Teleporter" index="0"]
-position = Vector2(4, -11)
-shape = SubResource("RectangleShape2D_h7y1b")
-
-[node name="TeleportBehavior" parent="Teleporter" index="2"]
-target_map = "res://game.tscn"
-
-[node name="Teleporter2" parent="." index="4" instance=ExtResource("2_xakkq")]
-position = Vector2(-3, 126)
-
-[node name="CollisionShape2D" parent="Teleporter2" index="0"]
-position = Vector2(3.5, 2)
-shape = SubResource("RectangleShape2D_37ktu")
-
-[node name="TeleportBehavior" parent="Teleporter2" index="2"]
-target_map = "res://room/hallway.tscn"
-teleport_target = "EastEntrance"
-
-[editable path="Teleporter"]
-[editable path="Teleporter2"]
