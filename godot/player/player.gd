@@ -15,19 +15,20 @@ func _ready():
 	if owner and owner.has_node("TeleportTargets") and GlobalVars.teleport_target:
 		global_position = owner.get_node("TeleportTargets/%s" % GlobalVars.teleport_target).global_position
 	facing = GlobalVars.player_facing
-	if facing == FACE_RIGHT:
-		$AnimatedSprite2D.play("stand_right")
-	else:
-		$AnimatedSprite2D.play("stand_left")
+	stop_walking()
 
 func _on_EventBus_room_changing():
 	GlobalVars.player_facing = facing
 
-func _on_Cutscene_cutscene_started():
+func stop_walking():
 	if facing == FACE_RIGHT:
 		$AnimatedSprite2D.play("stand_right")
 	else:
 		$AnimatedSprite2D.play("stand_left")
+
+func _on_Cutscene_cutscene_started():
+	stop_walking()
+
 func cleanup_interactables():
 	for ii in range(interactables.size() - 1, -1, -1):
 			var interactable = interactables[ii]
@@ -37,10 +38,13 @@ func cleanup_interactables():
 func _on_InteractableDetector_area_entered(area: Area2D):
 	cleanup_interactables()
 	if area is Interactable:
-		interactables.push_back(area)
-		EventBus.top_interactable_changed.emit(area)
-	elif area is TouchTrigger:
-		area.interact()
+		if area.trigger_type == "interact":
+			interactables.push_back(area)
+			EventBus.top_interactable_changed.emit(area)
+			stop_walking()
+		elif area.trigger_type == "touch":
+			area.interact()
+			stop_walking()
 
 func _on_InteractableDetector_area_exited(area: Area2D):
 	cleanup_interactables()
