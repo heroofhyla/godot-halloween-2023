@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj2l0tveri5hq"]
+
+[ext_resource type="Script" path="res://editable_shape/editable_shape.gd" id="1_7qdcv"]
+
+[node name="EditableShape" type="Node"]
+script = ExtResource("1_7qdcv")

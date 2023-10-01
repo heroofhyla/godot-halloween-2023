@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://sqsgtmdw8x7s"]
+[gd_scene load_steps=15 format=3 uid="uid://sqsgtmdw8x7s"]
 
+[ext_resource type="Script" path="res://room/room.gd" id="1_335xl"]
 [ext_resource type="PackedScene" uid="uid://cl2a58cjibrcp" path="res://player/player.tscn" id="1_esvkg"]
 [ext_resource type="TileSet" uid="uid://nt46vdtko4ic" path="res://tiles/tileset.tres" id="1_jex2m"]
 [ext_resource type="SpriteFrames" uid="uid://dcdycihadohwn" path="res://powered_gate/powered_gate.tres" id="4_8l4d1"]
@@ -8,11 +9,15 @@
 [ext_resource type="Script" path="res://broken_gate_steps.gd" id="7_fe3eu"]
 [ext_resource type="Texture2D" uid="uid://dglwp12qmm1ye" path="res://crate.png" id="8_4jau8"]
 [ext_resource type="Script" path="res://fuse_crate.gd" id="8_tbj4m"]
+[ext_resource type="PackedScene" uid="uid://8hpbn1d1vjmb" path="res://interactable/interact_hint.tscn" id="10_u1vcs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5lub"]
+size = Vector2(10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ck6fg"]
 size = Vector2(48, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwfdj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmktw"]
 size = Vector2(18, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxr2l"]
@@ -20,6 +25,7 @@ size = Vector2(14, 12)
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_335xl")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -42,18 +48,24 @@ position = Vector2(467, 327)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="BrokenGate" parent="." instance=ExtResource("4_g5223")]
-position = Vector2(391, 80)
-trigger_type = "interact"
+position = Vector2(398, 91)
+
+[node name="ControlPanel" type="Sprite2D" parent="BrokenGate"]
+position = Vector2(-7, -11)
+texture = ExtResource("5_bjv07")
+offset = Vector2(0, -16)
 
 [node name="CutsceneSteps" type="Node" parent="BrokenGate"]
 script = ExtResource("7_fe3eu")
 
-[node name="ControlPanel" type="Sprite2D" parent="BrokenGate"]
-texture = ExtResource("5_bjv07")
-offset = Vector2(0, -16)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BrokenGate"]
+position = Vector2(-7, -6)
+shape = SubResource("RectangleShape2D_a5lub")
+
+[node name="InteractHint" parent="BrokenGate" instance=ExtResource("10_u1vcs")]
 
 [node name="Gate" type="StaticBody2D" parent="BrokenGate"]
-position = Vector2(-31, 0)
+position = Vector2(-38, -11)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BrokenGate/Gate"]
 position = Vector2(0, -16)
@@ -65,17 +77,17 @@ position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_ck6fg")
 
 [node name="FuseCrate" parent="." instance=ExtResource("4_g5223")]
-position = Vector2(152, 92)
-trigger_type = "interact"
-
-[node name="CollisionShape2D" parent="FuseCrate" index="0"]
-position = Vector2(1, -4)
-shape = SubResource("RectangleShape2D_jwfdj")
+position = Vector2(152, 85)
 
 [node name="CutsceneSteps" type="Node" parent="FuseCrate"]
 script = ExtResource("8_tbj4m")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FuseCrate"]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_rmktw")
+
 [node name="Crate" type="StaticBody2D" parent="FuseCrate"]
+position = Vector2(0, 7)
 
 [node name="Sprite2D" type="Sprite2D" parent="FuseCrate/Crate"]
 position = Vector2(0, -11)
@@ -85,4 +97,5 @@ texture = ExtResource("8_4jau8")
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_hxr2l")
 
-[editable path="FuseCrate"]
+[node name="InteractHint" parent="." instance=ExtResource("10_u1vcs")]
+position = Vector2(152, 58)

@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6rrh83tw5u7y"]
+[gd_scene load_steps=9 format=3 uid="uid://c6rrh83tw5u7y"]
 
 [ext_resource type="PackedScene" uid="uid://d37bvh3xoepfd" path="res://room/room.tscn" id="1_tkru7"]
+[ext_resource type="PackedScene" uid="uid://b3p7djvnmkynu" path="res://teleporter/teleporter.tscn" id="2_8tesg"]
+[ext_resource type="PackedScene" uid="uid://c0tmw4il8es7e" path="res://interactable/interactable.tscn" id="3_c7dxd"]
+[ext_resource type="PackedScene" uid="uid://8hpbn1d1vjmb" path="res://interactable/interact_hint.tscn" id="4_ofqg1"]
+[ext_resource type="Texture2D" uid="uid://7gh7bufkqv1i" path="res://control_panel/control_panel.png" id="5_twkow"]
+[ext_resource type="Script" path="res://room/parlor_control_panel.gd" id="6_0sfua"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xs6sb"]
+size = Vector2(10, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvs4n"]
+size = Vector2(10, 10)
 
 [node name="Room" instance=ExtResource("1_tkru7")]
 
@@ -16,3 +27,28 @@ position = Vector2(22, 119)
 
 [node name="NorthEntrance" type="Marker2D" parent="TeleportTargets" index="1"]
 position = Vector2(192, 25)
+
+[node name="Teleporter" parent="." index="3" instance=ExtResource("2_8tesg")]
+position = Vector2(13, 110)
+target_map = "res://room/hallway.tscn"
+teleport_target = "EastEntrance"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter" index="1"]
+position = Vector2(-13, 19)
+shape = SubResource("RectangleShape2D_xs6sb")
+
+[node name="Interactable" parent="." index="4" instance=ExtResource("3_c7dxd")]
+position = Vector2(144, 69)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" index="1"]
+shape = SubResource("RectangleShape2D_vvs4n")
+
+[node name="InteractHint" parent="Interactable" index="2" instance=ExtResource("4_ofqg1")]
+position = Vector2(0, -33)
+
+[node name="ControlPanel" type="Sprite2D" parent="Interactable" index="3"]
+position = Vector2(0, -18)
+texture = ExtResource("5_twkow")
+
+[node name="CutsceneSteps" type="Node" parent="Interactable" index="4"]
+script = ExtResource("6_0sfua")

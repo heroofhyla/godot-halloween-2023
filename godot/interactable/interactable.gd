@@ -1,7 +1,7 @@
 class_name Interactable
 extends Area2D
 
-@export_enum("touch", "interact") var trigger_type: String = "touch"
+@export_enum("touch", "interact") var trigger_type: String = "interact"
 @export var activate_children: bool = true
 @export var activate_siblings: bool = false
 @export var activate_parent: bool = false

@@ -25,6 +25,7 @@ func show_messages(messages: Array):
 func show_message(message: String):
 	print("show_message")
 	%TextBoxBG.visible = true
+	await get_tree().process_frame
 	%TextBoxLabel.text = message
 	%TextBoxLabel.visible_characters = 0
 	%TextBoxLabel.visible = true

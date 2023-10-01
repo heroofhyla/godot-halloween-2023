@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0tmw4il8es7e"]
+[gd_scene load_steps=3 format=3 uid="uid://c0tmw4il8es7e"]
 
 [ext_resource type="Script" path="res://interactable/interactable.gd" id="1_kvmi4"]
+[ext_resource type="PackedScene" uid="uid://dj2l0tveri5hq" path="res://editable_shape/editable_shape.tscn" id="2_ebat4"]
 
 [node name="Interactable" type="Area2D"]
+y_sort_enabled = true
 script = ExtResource("1_kvmi4")
+
+[node name="EditableShape" parent="." instance=ExtResource("2_ebat4")]

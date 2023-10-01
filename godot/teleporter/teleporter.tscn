@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dph1f2ff2gs1n"]
+[gd_scene load_steps=3 format=3 uid="uid://b3p7djvnmkynu"]
 
 [ext_resource type="PackedScene" uid="uid://c0tmw4il8es7e" path="res://interactable/interactable.tscn" id="1_xwiir"]
 [ext_resource type="Script" path="res://teleporter/teleporter.gd" id="2_o6he2"]
@@ -7,4 +7,5 @@
 script = ExtResource("2_o6he2")
 target_map = ""
 teleport_target = ""
+trigger_type = "touch"
 activate_children = false
