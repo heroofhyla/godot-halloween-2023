@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6rrh83tw5u7y"]
+[gd_scene load_steps=10 format=3 uid="uid://c6rrh83tw5u7y"]
 
 [ext_resource type="PackedScene" uid="uid://d37bvh3xoepfd" path="res://room/room.tscn" id="1_tkru7"]
 [ext_resource type="PackedScene" uid="uid://b3p7djvnmkynu" path="res://teleporter/teleporter.tscn" id="2_8tesg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://8hpbn1d1vjmb" path="res://interactable/interact_hint.tscn" id="4_ofqg1"]
 [ext_resource type="Texture2D" uid="uid://7gh7bufkqv1i" path="res://control_panel/control_panel.png" id="5_twkow"]
 [ext_resource type="Script" path="res://room/parlor_control_panel.gd" id="6_0sfua"]
+[ext_resource type="PackedScene" uid="uid://c778l7cb5m4iw" path="res://enemy/enemy.tscn" id="7_b5dbw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xs6sb"]
 size = Vector2(10, 64)
@@ -52,3 +53,6 @@ texture = ExtResource("5_twkow")
 
 [node name="CutsceneSteps" type="Node" parent="Interactable" index="4"]
 script = ExtResource("6_0sfua")
+
+[node name="enemy" parent="." index="5" instance=ExtResource("7_b5dbw")]
+position = Vector2(214, 128)
