@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cl2a58cjibrcp"]
+[gd_scene load_steps=6 format=3 uid="uid://cl2a58cjibrcp"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_q3vtt"]
 [ext_resource type="Texture2D" uid="uid://bnrcvwvhuqr3x" path="res://player/player.png" id="2_k8gp3"]
@@ -7,7 +7,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_3js8c"]
 radius = 5.0
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0km1h"]
+radius = 5.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_q3vtt")
 metadata/_edit_group_ = true
@@ -22,8 +26,17 @@ vframes = 3
 polygon = PackedVector2Array(0, 6, -6, 0, 0, -6, 6, 0)
 
 [node name="InteractableDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableDetector"]
 shape = SubResource("CircleShape2D_3js8c")
 
 [node name="HumanoidAnimations" parent="." instance=ExtResource("3_urbct")]
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_0km1h")

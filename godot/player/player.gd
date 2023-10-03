@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 const SPEED = 64.0
@@ -11,11 +12,16 @@ func _ready():
 	EventBus.room_changing.connect(_on_EventBus_room_changing)
 	$InteractableDetector.area_entered.connect(_on_InteractableDetector_area_entered)
 	$InteractableDetector.area_exited.connect(_on_InteractableDetector_area_exited)
+	$HurtBox.area_entered.connect(_on_HurtBox_area_entered)
 	Cutscene.cutscene_started.connect(_on_Cutscene_cutscene_started)
 	if owner and owner.has_node("TeleportTargets") and GlobalVars.teleport_target:
 		global_position = owner.get_node("TeleportTargets/%s" % GlobalVars.teleport_target).global_position
 	facing = GlobalVars.player_facing
 	stop_walking()
+
+func _on_HurtBox_area_entered(area):
+	print("Hurt!")
+	get_tree().quit()
 
 func _on_EventBus_room_changing():
 	GlobalVars.player_facing = facing

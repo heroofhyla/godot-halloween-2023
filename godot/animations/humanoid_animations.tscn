@@ -88,7 +88,7 @@ _data = {
 "walk_right": SubResource("Animation_qneck")
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer"]
+[node name="HumanoidAnimations" type="AnimationPlayer"]
 libraries = {
 "": SubResource("AnimationLibrary_aij6r")
 }

@@ -5,6 +5,8 @@
 
 [node name="Interactable" type="Area2D"]
 y_sort_enabled = true
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_kvmi4")
 
 [node name="EditableShape" parent="." instance=ExtResource("2_ebat4")]
