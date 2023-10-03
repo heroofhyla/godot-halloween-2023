@@ -1,98 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cl2a58cjibrcp"]
+[gd_scene load_steps=5 format=3 uid="uid://cl2a58cjibrcp"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_q3vtt"]
 [ext_resource type="Texture2D" uid="uid://bnrcvwvhuqr3x" path="res://player/player.png" id="2_k8gp3"]
+[ext_resource type="PackedScene" uid="uid://bk3xjqn83teab" path="res://animations/humanoid_animations.tscn" id="3_urbct"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3js8c"]
 radius = 5.0
-
-[sub_resource type="Animation" id="Animation_nyrud"]
-resource_name = "stand_right"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_5150j"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_hgqtj"]
-resource_name = "stand_left"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
-[sub_resource type="Animation" id="Animation_qneck"]
-resource_name = "walk_right"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [2, 4]
-}
-
-[sub_resource type="Animation" id="Animation_eqckm"]
-resource_name = "walk_left"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [3, 5]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_aij6r"]
-_data = {
-"RESET": SubResource("Animation_5150j"),
-"stand_left": SubResource("Animation_hgqtj"),
-"stand_right": SubResource("Animation_nyrud"),
-"walk_left": SubResource("Animation_eqckm"),
-"walk_right": SubResource("Animation_qneck")
-}
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -113,7 +26,4 @@ polygon = PackedVector2Array(0, 6, -6, 0, 0, -6, 6, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableDetector"]
 shape = SubResource("CircleShape2D_3js8c")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_aij6r")
-}
+[node name="HumanoidAnimations" parent="." instance=ExtResource("3_urbct")]

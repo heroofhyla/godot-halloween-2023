@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://l8aqucje80iw"]
+[gd_scene load_steps=3 format=3 uid="uid://l8aqucje80iw"]
+
+[ext_resource type="PackedScene" uid="uid://bk3xjqn83teab" path="res://animations/humanoid_animations.tscn" id="1_36i0c"]
+[ext_resource type="Texture2D" uid="uid://cn48wijueg8ov" path="res://enemy/enemy.png" id="2_xjsgg"]
 
 [node name="Enemy" type="CharacterBody2D"]
+
+[node name="AnimationPlayer" parent="." instance=ExtResource("1_36i0c")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+texture = ExtResource("2_xjsgg")
+hframes = 2
+vframes = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 6, -6, 0, 0, -6, 6, 0)

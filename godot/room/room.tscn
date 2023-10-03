@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cl2a58cjibrcp" path="res://player/player.tscn" id="2_faqff"]
 
 [node name="Room" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_uxdmp")
 
 [node name="TileMap" type="TileMap" parent="."]

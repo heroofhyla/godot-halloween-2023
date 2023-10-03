@@ -22,9 +22,9 @@ func _on_EventBus_room_changing():
 
 func stop_walking():
 	if facing == FACE_RIGHT:
-		$AnimationPlayer.play("stand_right")
+		$HumanoidAnimations.play("stand_right")
 	else:
-		$AnimationPlayer.play("stand_left")
+		$HumanoidAnimations.play("stand_left")
 
 func _on_Cutscene_cutscene_started():
 	stop_walking()
@@ -83,14 +83,14 @@ func _physics_process(_delta):
 	
 	if input_vector:
 		if facing == FACE_RIGHT:
-			$AnimationPlayer.play("walk_right")
+			$HumanoidAnimations.play("walk_right")
 		else:
-			$AnimationPlayer.play("walk_left")
+			$HumanoidAnimations.play("walk_left")
 		input_vector = input_vector.normalized()
 		velocity = input_vector * SPEED
 		move_and_slide()
 	else:
 		if facing == FACE_RIGHT:
-			$AnimationPlayer.play("stand_right")
+			$HumanoidAnimations.play("stand_right")
 		else:
-			$AnimationPlayer.play("stand_left")
+			$HumanoidAnimations.play("stand_left")
