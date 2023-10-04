@@ -22,6 +22,8 @@ func _ready():
 func _on_HurtBox_area_entered(area):
 	GlobalVars.player_health -= 1
 	EventBus.player_health_changed.emit()
+	if GlobalVars.player_health <= 0:
+		SceneManager.change_scene("res://game_over/game_over.tscn")
 
 func _on_EventBus_room_changing():
 	GlobalVars.player_facing = facing

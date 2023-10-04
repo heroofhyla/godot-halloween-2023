@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://jvv7dpg7b8w3"]
+
+[ext_resource type="Script" path="res://game_over/game_over.gd" id="1_0rdfn"]
+[ext_resource type="Texture2D" uid="uid://bmkqrrixp4gj6" path="res://game_over/game_over.png" id="1_i3s5d"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_0rdfn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_i3s5d")
+centered = false

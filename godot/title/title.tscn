@@ -9,5 +9,3 @@ script = ExtResource("1_tx74l")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_yefg2")
 centered = false
-
-[node name="SubViewport" type="SubViewport" parent="."]

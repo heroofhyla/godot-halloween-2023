@@ -15,6 +15,12 @@ const LUNGE_DISTANCE_SQUARED: float = 32.0 ** 2
 enum {FACE_RIGHT, FACE_LEFT}
 var facing = FACE_RIGHT
 
+func _ready():
+	Cutscene.cutscene_started.connect(_on_Cutscene_cutscene_started)
+
+func _on_Cutscene_cutscene_started():
+	stand()
+
 func stand():
 	if facing == FACE_RIGHT:
 		anim.play("stand_right")
@@ -100,6 +106,7 @@ class LungeState extends RefCounted:
 		entity.hitbox_enabled(true)
 	
 	func _physics_process(delta: float):
+		entity.walk()
 		if Time.get_ticks_msec() - start_time >= LUNGE_TIME:
 			return LungeRecoveryState.new(entity)
 
