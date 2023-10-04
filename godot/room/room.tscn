@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://d37bvh3xoepfd"]
+[gd_scene load_steps=6 format=3 uid="uid://d37bvh3xoepfd"]
 
 [ext_resource type="TileSet" uid="uid://nt46vdtko4ic" path="res://tiles/tileset.tres" id="1_p1r84"]
 [ext_resource type="Script" path="res://room/room.gd" id="1_uxdmp"]
 [ext_resource type="PackedScene" uid="uid://cl2a58cjibrcp" path="res://player/player.tscn" id="2_faqff"]
+[ext_resource type="PackedScene" uid="uid://had7dgw12ag5" path="res://ui/heart_meter.tscn" id="4_q7oiv"]
+[ext_resource type="Texture2D" uid="uid://d2wwqnd7at3g4" path="res://ui/empty_heart.png" id="5_gjvlw"]
 
 [node name="Room" type="Node2D"]
 y_sort_enabled = true
@@ -27,3 +29,21 @@ layer_1/tile_data = PackedInt32Array()
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="TeleportTargets" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MaxHeartMeter" parent="CanvasLayer" instance=ExtResource("4_q7oiv")]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 26.0
+offset_bottom = 26.0
+texture = ExtResource("5_gjvlw")
+expand_mode = 1
+meter_type = "player_max_health"
+
+[node name="HeartMeter" parent="CanvasLayer" instance=ExtResource("4_q7oiv")]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 26.0
+offset_bottom = 26.0
+expand_mode = 1

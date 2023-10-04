@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://had7dgw12ag5"]
+
+[ext_resource type="Texture2D" uid="uid://bwggryniauj6q" path="res://ui/heart.png" id="1_imihq"]
+[ext_resource type="Script" path="res://ui/heart_meter.gd" id="2_bpsmq"]
+
+[node name="HeartMeter" type="TextureRect"]
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("1_imihq")
+stretch_mode = 1
+script = ExtResource("2_bpsmq")

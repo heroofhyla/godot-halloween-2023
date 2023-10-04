@@ -20,8 +20,8 @@ func _ready():
 	stop_walking()
 
 func _on_HurtBox_area_entered(area):
-	print("Hurt!")
-	get_tree().quit()
+	GlobalVars.player_health -= 1
+	EventBus.player_health_changed.emit()
 
 func _on_EventBus_room_changing():
 	GlobalVars.player_facing = facing

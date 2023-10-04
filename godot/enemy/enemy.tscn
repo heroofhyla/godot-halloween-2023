@@ -9,6 +9,7 @@ radius = 6.0
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
+motion_mode = 1
 script = ExtResource("1_hlnxu")
 
 [node name="HumanoidAnimations" parent="." instance=ExtResource("1_36i0c")]
