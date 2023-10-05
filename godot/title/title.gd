@@ -5,4 +5,5 @@ func _ready():
 func _input(event):
 	if event.is_action("interact"):
 		GlobalVars.reset()
+		MusicPlayer.play("bgm1")
 		SceneManager.change_scene("res://room/hallway.tscn")

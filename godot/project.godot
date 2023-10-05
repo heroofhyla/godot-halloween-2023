@@ -21,6 +21,7 @@ EventBus="*res://event_bus.gd"
 Cutscene="*res://cutscene/cutscene.tscn"
 GlobalVars="*res://global_vars/global_vars.gd"
 SceneManager="*res://scene_manager/scene_manager.tscn"
+MusicPlayer="*res://music/music_player.tscn"
 
 [display]
 
