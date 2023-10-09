@@ -6,4 +6,4 @@
 script = ExtResource("1_hbkrc")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -46.741
+volume_db = -44.973

@@ -5,4 +5,4 @@ var songs: Dictionary = {
 }
 func play(song: String):
 	$AudioStreamPlayer.stream = songs[song]
-	$AudioStreamPlayer.play()
+	$AudioStreamPlayer.play(0.0)
