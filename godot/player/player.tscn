@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bnrcvwvhuqr3x" path="res://player/player.png" id="2_k8gp3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3js8c"]
-radius = 5.0
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0km1h"]
-radius = 5.0
+radius = 4.0
 
 [sub_resource type="Animation" id="Animation_rv0or"]
 length = 0.001
@@ -111,7 +111,7 @@ hframes = 2
 vframes = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(0, 6, -6, 0, 0, -6, 6, 0)
+polygon = PackedVector2Array(0, 5, -7, 0, 0, -5, 7, 0)
 
 [node name="InteractableDetector" type="Area2D" parent="."]
 collision_layer = 0
@@ -121,6 +121,7 @@ collision_mask = 8
 shape = SubResource("CircleShape2D_3js8c")
 
 [node name="HurtBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 4
 
