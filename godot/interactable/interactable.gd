@@ -28,7 +28,9 @@ func interact():
 		activate()
 
 	for node in activate_additional:
+		print(node.name)
 		if node.has_method("activate"):
+			print("activating")
 			node.activate()
 
 func activate():

@@ -2,6 +2,7 @@ extends Node
 
 enum {NEVER_INTERACTED, POWER_OUT, POWER_RESTORED, GATE_OPENED}
 
+var found_bathroom_key: bool
 var found_fuse: bool
 var broken_gate_progress: int
 var teleport_target: String
@@ -12,6 +13,7 @@ var player:
 	get: return get_tree().get_nodes_in_group("player")[0]
 
 func reset():
+	found_bathroom_key = false
 	found_fuse = false
 	broken_gate_progress = NEVER_INTERACTED
 	teleport_target = ""

@@ -22,6 +22,11 @@ func cutscene_set(object: Object, property: String, value):
 		object.set(property, value)
 	)
 
+func activate_node(node_path: String):
+	steps.push_back(func():
+		get_node(node_path).activate()
+	)
+
 func play_animated_sprite(sprite: AnimatedSprite2D, animation: String):
 	steps.push_back(func():
 		sprite.play(animation)

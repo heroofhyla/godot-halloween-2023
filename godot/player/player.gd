@@ -49,7 +49,7 @@ func _on_InteractableDetector_area_entered(area: Area2D):
 		if area.trigger_type == "interact":
 			interactables.push_back(area)
 			EventBus.top_interactable_changed.emit(area)
-			stop_walking()
+			
 		elif area.trigger_type == "touch":
 			area.interact()
 			stop_walking()

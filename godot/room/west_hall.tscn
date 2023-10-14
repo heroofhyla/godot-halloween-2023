@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d37bvh3xoepfd" path="res://room/room.tscn" id="1_oblwt"]
 [ext_resource type="PackedScene" uid="uid://c0tmw4il8es7e" path="res://interactable/interactable.tscn" id="2_bw1re"]
 [ext_resource type="PackedScene" uid="uid://8hpbn1d1vjmb" path="res://interactable/interact_hint.tscn" id="3_4b6l5"]
-[ext_resource type="Script" path="res://interactable/readable_sign.gd" id="4_06tj5"]
+[ext_resource type="Script" path="res://interactable/unlockable_stall_door.gd" id="4_cut8u"]
 [ext_resource type="PackedScene" uid="uid://b3p7djvnmkynu" path="res://teleporter/teleporter.tscn" id="5_2j303"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v821k"]
@@ -25,6 +25,12 @@ position = Vector2(291, 263)
 [node name="LockerRoomEntrance" type="Marker2D" parent="TeleportTargets" index="0"]
 position = Vector2(232, 344)
 
+[node name="RestroomEntrance" type="Marker2D" parent="TeleportTargets" index="1"]
+position = Vector2(232, 216)
+
+[node name="CustodialEntrance" type="Marker2D" parent="TeleportTargets" index="2"]
+position = Vector2(344, 152)
+
 [node name="LockerSign" parent="." index="4" instance=ExtResource("2_bw1re")]
 position = Vector2(254, 334)
 
@@ -36,7 +42,7 @@ shape = SubResource("RectangleShape2D_v821k")
 position = Vector2(-13, -36)
 
 [node name="ReadableSign" type="Node" parent="LockerSign" index="3"]
-script = ExtResource("4_06tj5")
+script = ExtResource("4_cut8u")
 messages = Array[String](["\"Lockers\""])
 
 [node name="RestroomSign" parent="." index="5" instance=ExtResource("2_bw1re")]
@@ -50,7 +56,7 @@ shape = SubResource("RectangleShape2D_v821k")
 position = Vector2(-13, -36)
 
 [node name="ReadableSign" type="Node" parent="RestroomSign" index="3"]
-script = ExtResource("4_06tj5")
+script = ExtResource("4_cut8u")
 messages = Array[String](["\"Restroom\""])
 
 [node name="CustodialSign" parent="." index="6" instance=ExtResource("2_bw1re")]
@@ -64,7 +70,7 @@ shape = SubResource("RectangleShape2D_v821k")
 position = Vector2(4, -36)
 
 [node name="ReadableSign" type="Node" parent="CustodialSign" index="3"]
-script = ExtResource("4_06tj5")
+script = ExtResource("4_cut8u")
 messages = Array[String](["\"Custodial Supplies\""])
 
 [node name="LockerTeleport" parent="." index="7" instance=ExtResource("5_2j303")]
@@ -74,5 +80,25 @@ target_map = "res://room/locker_room.tscn"
 teleport_target = "EastEntrance"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LockerTeleport" index="1"]
+position = Vector2(0, 11)
+shape = SubResource("RectangleShape2D_k27u2")
+
+[node name="RestroomTeleport" parent="." index="8" instance=ExtResource("5_2j303")]
+z_index = 2
+position = Vector2(208, 213)
+target_map = "res://room/restroom.tscn"
+teleport_target = "EastEntrance"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RestroomTeleport" index="1"]
+position = Vector2(0, 11)
+shape = SubResource("RectangleShape2D_k27u2")
+
+[node name="CustodialTeleport" parent="." index="9" instance=ExtResource("5_2j303")]
+z_index = 2
+position = Vector2(368, 149)
+target_map = "res://room/custodial.tscn"
+teleport_target = "WestEntrance"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CustodialTeleport" index="1"]
 position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_k27u2")
