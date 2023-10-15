@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d37bvh3xoepfd" path="res://room/room.tscn" id="1_qc7f2"]
 [ext_resource type="PackedScene" uid="uid://b3p7djvnmkynu" path="res://teleporter/teleporter.tscn" id="2_pfd1c"]
 [ext_resource type="PackedScene" uid="uid://c0tmw4il8es7e" path="res://interactable/interactable.tscn" id="3_xurey"]
-[ext_resource type="Script" path="res://interactable/unlockable_stall_door.gd" id="4_p7gpf"]
+[ext_resource type="Script" path="res://interactable/readable_sign.gd" id="4_n15t6"]
 [ext_resource type="PackedScene" uid="uid://8hpbn1d1vjmb" path="res://interactable/interact_hint.tscn" id="5_jevu6"]
 [ext_resource type="Script" path="res://room/custodial_shelves.gd" id="6_x22v5"]
 
@@ -46,7 +46,7 @@ position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_kirss")
 
 [node name="CutsceneSteps" type="Node" parent="Mop" index="2"]
-script = ExtResource("4_p7gpf")
+script = ExtResource("4_n15t6")
 messages = Array[String](["The ancient mop is stuck to 
 the floor."])
 
@@ -61,7 +61,7 @@ position = Vector2(2, 6.5)
 shape = SubResource("RectangleShape2D_bmhaq")
 
 [node name="CutsceneSteps" type="Node" parent="Bucket" index="2"]
-script = ExtResource("4_p7gpf")
+script = ExtResource("4_n15t6")
 messages = Array[String](["The bucket is empty."])
 
 [node name="InteractHint" parent="Bucket" index="3" instance=ExtResource("5_jevu6")]

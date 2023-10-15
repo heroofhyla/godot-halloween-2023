@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d37bvh3xoepfd" path="res://room/room.tscn" id="1_oblwt"]
 [ext_resource type="PackedScene" uid="uid://c0tmw4il8es7e" path="res://interactable/interactable.tscn" id="2_bw1re"]
 [ext_resource type="PackedScene" uid="uid://8hpbn1d1vjmb" path="res://interactable/interact_hint.tscn" id="3_4b6l5"]
-[ext_resource type="Script" path="res://interactable/unlockable_stall_door.gd" id="4_cut8u"]
+[ext_resource type="Script" path="res://interactable/readable_sign.gd" id="4_cahg7"]
 [ext_resource type="PackedScene" uid="uid://b3p7djvnmkynu" path="res://teleporter/teleporter.tscn" id="5_2j303"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v821k"]
@@ -42,7 +42,7 @@ shape = SubResource("RectangleShape2D_v821k")
 position = Vector2(-13, -36)
 
 [node name="ReadableSign" type="Node" parent="LockerSign" index="3"]
-script = ExtResource("4_cut8u")
+script = ExtResource("4_cahg7")
 messages = Array[String](["\"Lockers\""])
 
 [node name="RestroomSign" parent="." index="5" instance=ExtResource("2_bw1re")]
@@ -56,7 +56,7 @@ shape = SubResource("RectangleShape2D_v821k")
 position = Vector2(-13, -36)
 
 [node name="ReadableSign" type="Node" parent="RestroomSign" index="3"]
-script = ExtResource("4_cut8u")
+script = ExtResource("4_cahg7")
 messages = Array[String](["\"Restroom\""])
 
 [node name="CustodialSign" parent="." index="6" instance=ExtResource("2_bw1re")]
@@ -70,7 +70,7 @@ shape = SubResource("RectangleShape2D_v821k")
 position = Vector2(4, -36)
 
 [node name="ReadableSign" type="Node" parent="CustodialSign" index="3"]
-script = ExtResource("4_cut8u")
+script = ExtResource("4_cahg7")
 messages = Array[String](["\"Custodial Supplies\""])
 
 [node name="LockerTeleport" parent="." index="7" instance=ExtResource("5_2j303")]
