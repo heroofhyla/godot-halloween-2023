@@ -783,6 +783,10 @@ texture = ExtResource("9_480q6")
 2:1/0/y_sort_origin = 17
 2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:1/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/y_sort_origin = 49
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tdmph"]
 texture = ExtResource("10_wmvho")

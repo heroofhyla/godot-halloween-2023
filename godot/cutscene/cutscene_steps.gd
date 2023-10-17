@@ -22,9 +22,25 @@ func cutscene_set(object: Object, property: String, value):
 		object.set(property, value)
 	)
 
+func cutscene_local_set(property: String, value):
+	steps.push_back(local_set.bind(property, value))
+
+func local_set(property: String, value):
+	GlobalVars.local_vars[get_path() as String + ":" + property] = value
+
+func local_get(property: String, default):
+	return GlobalVars.local_vars.get(get_path() as String + ":" + property, default)
+
 func activate_node(node_path: String):
 	steps.push_back(func():
 		get_node(node_path).activate()
+	)
+
+func activate_children():
+	steps.push_back(func():
+		for child in get_children():
+			if child.has_method("activate"):
+				child.activate()
 	)
 
 func play_animated_sprite(sprite: AnimatedSprite2D, animation: String):
