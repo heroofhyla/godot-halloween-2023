@@ -18,6 +18,8 @@ func interact():
 				child.activate()
 	if activate_siblings:
 		for sibling in get_parent().get_children():
+			if sibling == self:
+				continue
 			if sibling.has_method("activate"):
 				sibling.activate()
 	if activate_parent and get_parent().has_method("activate"):

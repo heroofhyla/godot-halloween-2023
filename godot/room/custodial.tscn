@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c0tmw4il8es7e" path="res://interactable/interactable.tscn" id="3_xurey"]
 [ext_resource type="Script" path="res://interactable/readable_sign.gd" id="4_n15t6"]
 [ext_resource type="PackedScene" uid="uid://8hpbn1d1vjmb" path="res://interactable/interact_hint.tscn" id="5_jevu6"]
-[ext_resource type="Script" path="res://room/custodial_shelves.gd" id="6_x22v5"]
+[ext_resource type="Script" path="res://interactable/findable_item.gd" id="6_ue8qk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwy2i"]
 size = Vector2(10, 32)
@@ -75,7 +75,13 @@ position = Vector2(1, 4.5)
 shape = SubResource("RectangleShape2D_c4ep7")
 
 [node name="CutsceneSteps" type="Node" parent="Shelves" index="2"]
-script = ExtResource("6_x22v5")
+script = ExtResource("6_ue8qk")
+found_messages = Array[String](["The shelves are filled with
+cleaning supplies.", "You also found a key
+labeled \"lockers\"."])
+empty_messages = Array[String](["The shelves are filled with
+cleaning supplies."])
+var_to_set = "has_locker_key"
 
 [node name="InteractHint" parent="Shelves" index="3" instance=ExtResource("5_jevu6")]
 position = Vector2(0, -23)

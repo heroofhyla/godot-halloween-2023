@@ -1,3 +1,4 @@
+class_name FindableItem
 extends CutsceneSteps
 
 @export_multiline var found_messages: Array[String]
