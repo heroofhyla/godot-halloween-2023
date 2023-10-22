@@ -13,7 +13,7 @@ func _steps():
 		if found_messages:
 			show_messages(found_messages)
 			if var_to_set:
-				GlobalVars.set(var_to_set, true)
+				GlobalVars.set_or_add(var_to_set)
 				local_set("found", true)
 			else:
 				printerr("No variable set for " + (get_path() as String))

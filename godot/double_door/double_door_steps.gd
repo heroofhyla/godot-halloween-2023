@@ -20,6 +20,6 @@ func _steps():
 		else:
 			activate_node(owner.get_path() as String)
 			if local_get("locked", false):
-				show_message("You unlocked it with the\n." + key_pretty_name)
+				show_message("You unlocked it with the\n%s." % key_pretty_name)
 			local_set("open", true)
 

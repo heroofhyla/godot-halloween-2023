@@ -45,9 +45,11 @@ messages = Array[String](["Nothing but cobwebs."])
 position = Vector2(312, 236)
 locked = true
 
-[node name="ReadableSign" type="Node" parent="Lockers/Locker2" index="1"]
-script = ExtResource("5_jt6au")
-messages = Array[String](["Filled with dust."])
+[node name="Drink" type="Node" parent="Lockers/Locker2" index="1"]
+script = ExtResource("9_afltv")
+found_messages = Array[String](["You found an energy drink."])
+empty_messages = Array[String](["Filled with dust."])
+var_to_set = "drink_count"
 
 [node name="Locker3" parent="Lockers" index="2" instance=ExtResource("3_yusyp")]
 position = Vector2(328, 236)
@@ -60,7 +62,7 @@ messages = Array[String](["Nothing catches your eye."])
 position = Vector2(344, 236)
 locked = true
 
-[node name="FindableItem" type="Node" parent="Lockers/Locker4" index="1"]
+[node name="WestHallwayKey" type="Node" parent="Lockers/Locker4" index="1"]
 script = ExtResource("9_afltv")
 found_messages = Array[String](["You found a keycard labeled
 \"West Hallway\"."])
@@ -85,43 +87,99 @@ shelves."])
 
 [node name="Locker7" parent="Lockers" index="6" instance=ExtResource("3_yusyp")]
 position = Vector2(280, 172)
-start_open = true
+locked = true
+
+[node name="Drink" type="Node" parent="Lockers/Locker7" index="1"]
+script = ExtResource("9_afltv")
+found_messages = Array[String](["You found an energy drink."])
+empty_messages = Array[String](["Dark and empty."])
+var_to_set = "drink_count"
 
 [node name="Locker8" parent="Lockers" index="7" instance=ExtResource("3_yusyp")]
 position = Vector2(296, 172)
 start_open = true
 
+[node name="ReadableSign" type="Node" parent="Lockers/Locker8" index="1"]
+script = ExtResource("5_jt6au")
+messages = Array[String](["The air inside is stale."])
+
 [node name="Locker9" parent="Lockers" index="8" instance=ExtResource("3_yusyp")]
 position = Vector2(312, 172)
+
+[node name="ReadableSign" type="Node" parent="Lockers/Locker9" index="1"]
+script = ExtResource("5_jt6au")
+messages = Array[String](["There's nothing there."])
 
 [node name="Locker10" parent="Lockers" index="9" instance=ExtResource("3_yusyp")]
 position = Vector2(360, 172)
 locked = true
 
+[node name="ReadableSign" type="Node" parent="Lockers/Locker10" index="1"]
+script = ExtResource("5_jt6au")
+messages = Array[String](["Darkness there and nothing
+more."])
+
 [node name="Locker11" parent="Lockers" index="10" instance=ExtResource("3_yusyp")]
 position = Vector2(376, 172)
 
+[node name="ReadableSign" type="Node" parent="Lockers/Locker11" index="1"]
+script = ExtResource("5_jt6au")
+messages = Array[String](["Still and silent."])
+
 [node name="Locker12" parent="Lockers" index="11" instance=ExtResource("3_yusyp")]
 position = Vector2(392, 172)
+
+[node name="ReadableSign" type="Node" parent="Lockers/Locker12" index="1"]
+script = ExtResource("5_jt6au")
+messages = Array[String](["Something has leaked all
+over the interior."])
 
 [node name="NorthLocker1" parent="Lockers" index="12" instance=ExtResource("4_dq25r")]
 position = Vector2(296, 216)
 locked = true
 
+[node name="ReadableSign" type="Node" parent="Lockers/NorthLocker1" index="1"]
+script = ExtResource("5_jt6au")
+messages = Array[String](["Various broken tools."])
+
 [node name="NorthLocker2" parent="Lockers" index="13" instance=ExtResource("4_dq25r")]
 position = Vector2(312, 216)
+
+[node name="Drink" type="Node" parent="Lockers/NorthLocker2" index="1"]
+script = ExtResource("9_afltv")
+found_messages = Array[String](["You found an energy drink."])
+empty_messages = Array[String](["There's nothing else."])
+var_to_set = "drink_count"
 
 [node name="NorthLocker3" parent="Lockers" index="14" instance=ExtResource("4_dq25r")]
 position = Vector2(328, 216)
 start_open = true
 
+[node name="ReadableSign" type="Node" parent="Lockers/NorthLocker3" index="1"]
+script = ExtResource("5_jt6au")
+messages = Array[String](["A glint of light catches
+your eye.", "But it was nothing."])
+
 [node name="NorthLocker4" parent="Lockers" index="15" instance=ExtResource("4_dq25r")]
 position = Vector2(344, 216)
+
+[node name="ReadableSign" type="Node" parent="Lockers/NorthLocker4" index="1"]
+script = ExtResource("5_jt6au")
+messages = Array[String](["Nothing at all."])
 
 [node name="NorthLocker5" parent="Lockers" index="16" instance=ExtResource("4_dq25r")]
 position = Vector2(360, 216)
 locked = true
 
+[node name="ReadableSign" type="Node" parent="Lockers/NorthLocker5" index="1"]
+script = ExtResource("5_jt6au")
+messages = Array[String](["You found $25.", "But you don't need it so
+you put it back."])
+
 [node name="NorthLocker6" parent="Lockers" index="17" instance=ExtResource("4_dq25r")]
 position = Vector2(376, 216)
 start_open = true
+
+[node name="ReadableSign" type="Node" parent="Lockers/NorthLocker6" index="1"]
+script = ExtResource("5_jt6au")
+messages = Array[String](["You don't find anything."])
