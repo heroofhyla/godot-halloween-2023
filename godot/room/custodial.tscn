@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bsqxy83vmqrhc"]
+[gd_scene load_steps=12 format=3 uid="uid://bsqxy83vmqrhc"]
 
 [ext_resource type="PackedScene" uid="uid://d37bvh3xoepfd" path="res://room/room.tscn" id="1_qc7f2"]
 [ext_resource type="PackedScene" uid="uid://b3p7djvnmkynu" path="res://teleporter/teleporter.tscn" id="2_pfd1c"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://interactable/readable_sign.gd" id="4_n15t6"]
 [ext_resource type="PackedScene" uid="uid://8hpbn1d1vjmb" path="res://interactable/interact_hint.tscn" id="5_jevu6"]
 [ext_resource type="Script" path="res://interactable/findable_item.gd" id="6_ue8qk"]
+[ext_resource type="Script" path="res://autoplay/autoplay.gd" id="7_rxyv2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwy2i"]
 size = Vector2(10, 32)
@@ -85,3 +86,13 @@ var_to_set = "has_locker_key"
 
 [node name="InteractHint" parent="Shelves" index="3" instance=ExtResource("5_jevu6")]
 position = Vector2(0, -23)
+
+[node name="Autoplay" type="Node" parent="." index="8"]
+script = ExtResource("7_rxyv2")
+
+[node name="ReadableSign" type="Node" parent="Autoplay" index="0"]
+script = ExtResource("4_n15t6")
+messages = Array[String](["The supply closet is small
+and cramped.", "There's barely room to
+move around.", "Most of the cleaning
+supplies are long expired.", "Morgan isn't here."])

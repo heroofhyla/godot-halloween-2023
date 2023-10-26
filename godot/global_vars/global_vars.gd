@@ -29,5 +29,11 @@ func set_or_add(var_name: String):
 	elif typeof(get(var_name)) == TYPE_INT:
 		set(var_name, get(var_name) + 1)
 
+func local_set(node: Node, property: String, value):
+	local_vars[node.get_path() as String + ":" + property] = value
+
+func local_get(node: Node, property: String, default):
+	return local_vars.get(node.get_path() as String + ":" + property, default)
+
 func _ready():
 	reset()
