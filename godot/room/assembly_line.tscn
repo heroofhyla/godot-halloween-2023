@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5pvubyr78tnt"]
+[gd_scene load_steps=19 format=3 uid="uid://c5pvubyr78tnt"]
 
 [ext_resource type="PackedScene" uid="uid://d37bvh3xoepfd" path="res://room/room.tscn" id="1_6viko"]
 [ext_resource type="Texture2D" uid="uid://fs32cv67npx5" path="res://crate/crate.png" id="2_usta6"]
 [ext_resource type="Texture2D" uid="uid://dnh8qxqv4cdqu" path="res://crate/lifter.png" id="3_0nqld"]
 [ext_resource type="Script" path="res://autoplay/autoplay.gd" id="4_paq2k"]
 [ext_resource type="Script" path="res://interactable/readable_sign.gd" id="5_633sg"]
+[ext_resource type="PackedScene" uid="uid://b3p7djvnmkynu" path="res://teleporter/teleporter.tscn" id="6_i1224"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ecif4"]
 size = Vector2(32, 32)
@@ -209,6 +210,15 @@ _data = {
 "retract_lifter_with_crate": SubResource("Animation_uf2wg")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tq8s8"]
+size = Vector2(10, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_amiq4"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8rxc"]
+size = Vector2(32, 16)
+
 [node name="AssemblyLine" instance=ExtResource("1_6viko")]
 metadata/_edit_horizontal_guides_ = [292.0]
 
@@ -222,6 +232,15 @@ position = Vector2(602, 376)
 
 [node name="SouthEntrance" type="Marker2D" parent="TeleportTargets" index="0"]
 position = Vector2(640, 424)
+
+[node name="SouthEastEntrance" type="Marker2D" parent="TeleportTargets" index="1"]
+position = Vector2(872, 328)
+
+[node name="NorthEastEntrance" type="Marker2D" parent="TeleportTargets" index="2"]
+position = Vector2(728, 264)
+
+[node name="NorthWestEntrance" type="Marker2D" parent="TeleportTargets" index="3"]
+position = Vector2(568, 264)
 
 [node name="CrateAndLifter" type="Node2D" parent="." index="4"]
 y_sort_enabled = true
@@ -240,7 +259,7 @@ shape = SubResource("RectangleShape2D_ecif4")
 
 [node name="Lifter" type="Node2D" parent="CrateAndLifter" index="1"]
 z_index = 1
-position = Vector2(67, 13)
+position = Vector2(64, 13)
 
 [node name="UpperShaft" type="Sprite2D" parent="CrateAndLifter/Lifter" index="0"]
 position = Vector2(0, -18)
@@ -284,3 +303,31 @@ huge box.", "Above the box hangs a
 metal claw.", "Some sort of crane for
 moving things around?", "Whatever's in the box, it's
 probably not Morgan."])
+
+[node name="Teleporter" parent="." index="6" instance=ExtResource("6_i1224")]
+z_index = 2
+position = Vector2(896, 336)
+target_map = "res://room/conveyor_maze.tscn"
+teleport_target = "SouthEastEntrance"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter" index="1"]
+shape = SubResource("RectangleShape2D_tq8s8")
+
+[node name="Teleporter2" parent="." index="7" instance=ExtResource("6_i1224")]
+z_index = 2
+position = Vector2(728, 208)
+target_map = "res://room/conveyor_maze.tscn"
+teleport_target = "SouthWestEntrance"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter2" index="1"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_amiq4")
+
+[node name="Teleporter3" parent="." index="8" instance=ExtResource("6_i1224")]
+z_index = 2
+position = Vector2(640, 464)
+target_map = "res://room/west_hall.tscn"
+teleport_target = "AssemblyEntrance"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter3" index="1"]
+shape = SubResource("RectangleShape2D_p8rxc")
