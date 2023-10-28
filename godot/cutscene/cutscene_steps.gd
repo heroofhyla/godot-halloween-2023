@@ -49,5 +49,16 @@ func play_animated_sprite(sprite: AnimatedSprite2D, animation: String):
 		await sprite.animation_finished
 	)
 
+func play_animation(player: AnimationPlayer, animation: String):
+	steps.push_back(func():
+		player.play(animation)
+		await player.animation_finished
+	)
+
+func cutscene_do(callable: Callable):
+	steps.push_back(func():
+		await callable.call()
+	)
+
 func _steps():
 	pass

@@ -1,11 +1,16 @@
-[gd_scene load_steps=19 format=3 uid="uid://c5pvubyr78tnt"]
+[gd_scene load_steps=25 format=3 uid="uid://c5pvubyr78tnt"]
 
 [ext_resource type="PackedScene" uid="uid://d37bvh3xoepfd" path="res://room/room.tscn" id="1_6viko"]
+[ext_resource type="Script" path="res://crate/crate_and_lifter.gd" id="2_qc0l4"]
 [ext_resource type="Texture2D" uid="uid://fs32cv67npx5" path="res://crate/crate.png" id="2_usta6"]
 [ext_resource type="Texture2D" uid="uid://dnh8qxqv4cdqu" path="res://crate/lifter.png" id="3_0nqld"]
 [ext_resource type="Script" path="res://autoplay/autoplay.gd" id="4_paq2k"]
 [ext_resource type="Script" path="res://interactable/readable_sign.gd" id="5_633sg"]
 [ext_resource type="PackedScene" uid="uid://b3p7djvnmkynu" path="res://teleporter/teleporter.tscn" id="6_i1224"]
+[ext_resource type="PackedScene" uid="uid://c0tmw4il8es7e" path="res://interactable/interactable.tscn" id="7_0n4ms"]
+[ext_resource type="Script" path="res://crate/crate_controls.gd" id="7_otpwc"]
+[ext_resource type="Texture2D" uid="uid://ckrfge18infhd" path="res://control_panel.png" id="8_xpx7a"]
+[ext_resource type="PackedScene" uid="uid://8hpbn1d1vjmb" path="res://interactable/interact_hint.tscn" id="9_vyjfa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ecif4"]
 size = Vector2(32, 32)
@@ -15,38 +20,38 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lifter/LowerShaft:position")
+tracks/0/path = NodePath("Lifter/UpperShaft/LowerShaft/LeftClamp:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -8)]
+"values": [Vector2(-26, -3)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Lifter/LowerShaft/LeftClamp:position")
+tracks/1/path = NodePath("Lifter/UpperShaft/LowerShaft/RightClamp:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-26, -3)]
+"values": [Vector2(19, -3)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Lifter/LowerShaft/RightClamp:position")
+tracks/2/path = NodePath("%Lifter/UpperShaft/LowerShaft:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(19, -3)]
+"values": [Vector2(0, 10)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -66,7 +71,7 @@ resource_name = "close_clamps"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lifter/LowerShaft/LeftClamp:position")
+tracks/0/path = NodePath("Lifter/UpperShaft/LowerShaft/LeftClamp:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -78,7 +83,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Lifter/LowerShaft/RightClamp:position")
+tracks/1/path = NodePath("Lifter/UpperShaft/LowerShaft/RightClamp:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -88,54 +93,12 @@ tracks/1/keys = {
 "values": [Vector2(19, -3), Vector2(15, -3)]
 }
 
-[sub_resource type="Animation" id="Animation_k0qub"]
-resource_name = "extend_lifter"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Lifter/LowerShaft:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -8), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_tf400"]
-resource_name = "extend_lifter_with_crate"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Lifter/LowerShaft:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -8), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HugeCrate/Crate:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -39), Vector2(0, -31)]
-}
-
 [sub_resource type="Animation" id="Animation_j2eie"]
 resource_name = "open_clamps"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lifter/LowerShaft/LeftClamp:position")
+tracks/0/path = NodePath("Lifter/UpperShaft/LowerShaft/LeftClamp:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -147,7 +110,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Lifter/LowerShaft/RightClamp:position")
+tracks/1/path = NodePath("Lifter/UpperShaft/LowerShaft/RightClamp:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -157,34 +120,49 @@ tracks/1/keys = {
 "values": [Vector2(15, -3), Vector2(19, -3)]
 }
 
-[sub_resource type="Animation" id="Animation_sxkac"]
-resource_name = "retract_lifter"
+[sub_resource type="Animation" id="Animation_4bv4p"]
+resource_name = "extend_claw"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lifter/LowerShaft:position")
+tracks/0/path = NodePath("%Lifter/UpperShaft/LowerShaft:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -8)]
+"values": [Vector2(0, 10), Vector2(0, 19)]
 }
 
-[sub_resource type="Animation" id="Animation_uf2wg"]
-resource_name = "retract_lifter_with_crate"
+[sub_resource type="Animation" id="Animation_53avs"]
+resource_name = "retract_claw"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lifter/LowerShaft:position")
+tracks/0/path = NodePath("%Lifter/UpperShaft/LowerShaft:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -8)]
+"values": [Vector2(0, 19), Vector2(0, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_a0ksc"]
+resource_name = "lift_box"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Lifter/UpperShaft/LowerShaft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 19), Vector2(0, 10)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -196,19 +174,49 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -31), Vector2(0, -39)]
+"values": [Vector2(0, -31), Vector2(0, -40)]
+}
+
+[sub_resource type="Animation" id="Animation_y5f8f"]
+resource_name = "lower_box"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Lifter/UpperShaft/LowerShaft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 10), Vector2(0, 19)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HugeCrate/Crate:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -40), Vector2(0, -31)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7knso"]
 _data = {
 "RESET": SubResource("Animation_usdfr"),
 "close_clamps": SubResource("Animation_ojs68"),
-"extend_lifter": SubResource("Animation_k0qub"),
-"extend_lifter_with_crate": SubResource("Animation_tf400"),
+"extend_claw": SubResource("Animation_4bv4p"),
+"lift_box": SubResource("Animation_a0ksc"),
+"lower_box": SubResource("Animation_y5f8f"),
 "open_clamps": SubResource("Animation_j2eie"),
-"retract_lifter": SubResource("Animation_sxkac"),
-"retract_lifter_with_crate": SubResource("Animation_uf2wg")
+"retract_claw": SubResource("Animation_53avs")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjuf2"]
+size = Vector2(10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tq8s8"]
 size = Vector2(10, 32)
@@ -228,7 +236,7 @@ layer_1/tile_data = PackedInt32Array(1310763, 11, 4, 1310764, 65547, 4, 1179691,
 layer_2/tile_data = PackedInt32Array(1310761, 11, 0, 1376297, 11, 1, 1310762, 65547, 0, 1376298, 65547, 1, 1310763, 11, 0, 1376299, 11, 1, 1310764, 65547, 0, 1376300, 65547, 1, 1310765, 11, 0, 1376301, 11, 1, 1310766, 65547, 0, 1376302, 65547, 1, 1310767, 11, 0, 1376303, 11, 1, 1310768, 65547, 0, 1376304, 65547, 1, 1441833, 11, 4, 1441834, 65547, 4, 1441835, 11, 4, 1441836, 65547, 4, 1441837, 11, 4, 1441838, 65547, 4, 1441839, 11, 4, 1441840, 65547, 4, 1179691, 131083, 0, 1245227, 131083, 1, 1179692, 196619, 0, 1245228, 196619, 1, 1048619, 131083, 0, 1114155, 131083, 1, 1048620, 196619, 0, 1114156, 196619, 1, 917547, 131083, 0, 983083, 131083, 1, 917548, 196619, 0, 983084, 196619, 1, 1310757, 11, 0, 1376293, 11, 1, 1310758, 65547, 0, 1376294, 65547, 1, 1310755, 11, 0, 1376291, 11, 1, 1310756, 65547, 0, 1376292, 65547, 1, 1310753, 131083, 2, 1376289, 131083, 3, 1310754, 196619, 2, 1376290, 196619, 3, 1179681, 131083, 2, 1245217, 131083, 3, 1179682, 196619, 2, 1245218, 196619, 3, 1048609, 131083, 2, 1114145, 131083, 3, 1048610, 196619, 2, 1114146, 196619, 3, 917537, 131083, 2, 983073, 131083, 3, 917538, 196619, 2, 983074, 196619, 3, 1441825, 11, 4, 1441826, 65547, 4, 1441827, 11, 4, 1441828, 65547, 4, 1441829, 11, 4, 1441830, 65547, 4, 1310769, 11, 0, 1376305, 11, 1, 1441841, 11, 4, 1310770, 65547, 0, 1376306, 65547, 1, 1441842, 65547, 4, 1179697, 131083, 0, 1245233, 131083, 1, 1179698, 196619, 0, 1245234, 196619, 1, 1048625, 131083, 0, 1114161, 131083, 1, 1048626, 196619, 0, 1114162, 196619, 1, 917553, 131083, 0, 983089, 131083, 1, 917554, 196619, 0, 983090, 196619, 1)
 
 [node name="Player" parent="." index="1"]
-position = Vector2(602, 376)
+position = Vector2(749, 301)
 
 [node name="SouthEntrance" type="Marker2D" parent="TeleportTargets" index="0"]
 position = Vector2(640, 424)
@@ -245,8 +253,10 @@ position = Vector2(568, 264)
 [node name="CrateAndLifter" type="Node2D" parent="." index="4"]
 y_sort_enabled = true
 position = Vector2(640, 264)
+script = ExtResource("2_qc0l4")
 
 [node name="HugeCrate" type="StaticBody2D" parent="CrateAndLifter" index="0"]
+unique_name_in_owner = true
 position = Vector2(0, 94)
 
 [node name="Crate" type="Sprite2D" parent="CrateAndLifter/HugeCrate" index="0"]
@@ -258,39 +268,71 @@ position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_ecif4")
 
 [node name="Lifter" type="Node2D" parent="CrateAndLifter" index="1"]
+unique_name_in_owner = true
 z_index = 1
-position = Vector2(64, 13)
+position = Vector2(64, 38)
 
 [node name="UpperShaft" type="Sprite2D" parent="CrateAndLifter/Lifter" index="0"]
-position = Vector2(0, -18)
+position = Vector2(0, -71)
 texture = ExtResource("3_0nqld")
 region_enabled = true
 region_rect = Rect2(7, 0, 38, 22)
 
-[node name="LowerShaft" type="Sprite2D" parent="CrateAndLifter/Lifter" index="1"]
-position = Vector2(0, -8)
+[node name="LowerShaft" type="Sprite2D" parent="CrateAndLifter/Lifter/UpperShaft" index="0"]
+position = Vector2(0, 10)
 texture = ExtResource("3_0nqld")
 region_enabled = true
 region_rect = Rect2(7, 20, 38, 16)
 
-[node name="LeftClamp" type="Sprite2D" parent="CrateAndLifter/Lifter/LowerShaft" index="0"]
+[node name="LeftClamp" type="Sprite2D" parent="CrateAndLifter/Lifter/UpperShaft/LowerShaft" index="0"]
 position = Vector2(-26, -3)
 texture = ExtResource("3_0nqld")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 25, 7, 19)
 
-[node name="RightClamp" type="Sprite2D" parent="CrateAndLifter/Lifter/LowerShaft" index="1"]
+[node name="RightClamp" type="Sprite2D" parent="CrateAndLifter/Lifter/UpperShaft/LowerShaft" index="1"]
 position = Vector2(19, -3)
 texture = ExtResource("3_0nqld")
 centered = false
 region_enabled = true
 region_rect = Rect2(45, 25, 7, 19)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CrateAndLifter" index="2"]
+[node name="CrateAndLifterAnimationPlayer" type="AnimationPlayer" parent="CrateAndLifter" index="2"]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_7knso")
 }
+
+[node name="ControlPanel" parent="CrateAndLifter" index="3" instance=ExtResource("7_0n4ms")]
+y_sort_enabled = false
+position = Vector2(106, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrateAndLifter/ControlPanel" index="1"]
+shape = SubResource("RectangleShape2D_bjuf2")
+
+[node name="Sprite2D" type="Sprite2D" parent="CrateAndLifter/ControlPanel" index="2"]
+position = Vector2(0, -15)
+texture = ExtResource("8_xpx7a")
+
+[node name="InteractHint" parent="CrateAndLifter/ControlPanel" index="3" instance=ExtResource("9_vyjfa")]
+z_index = 3
+position = Vector2(1, -29)
+
+[node name="CutsceneSteps" type="Node" parent="CrateAndLifter/ControlPanel" index="4"]
+script = ExtResource("7_otpwc")
+
+[node name="LifterInitialSpot" type="Marker2D" parent="CrateAndLifter" index="4"]
+unique_name_in_owner = true
+position = Vector2(64, 38)
+
+[node name="LifterAlignColumn" type="Marker2D" parent="CrateAndLifter" index="5"]
+unique_name_in_owner = true
+position = Vector2(0, 38)
+
+[node name="LifterAlignBox" type="Marker2D" parent="CrateAndLifter" index="6"]
+unique_name_in_owner = true
+position = Vector2(0, 94)
 
 [node name="Autoplay" type="Node" parent="." index="5"]
 script = ExtResource("4_paq2k")

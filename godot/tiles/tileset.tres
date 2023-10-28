@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=25 format=3 uid="uid://nt46vdtko4ic"]
+[gd_resource type="TileSet" load_steps=27 format=3 uid="uid://nt46vdtko4ic"]
 
 [ext_resource type="Texture2D" uid="uid://dqllolty1rqgm" path="res://tiles/test_floor.png" id="1_h1fiq"]
 [ext_resource type="Texture2D" uid="uid://du30p4jj4r2" path="res://tiles/test_wall.png" id="2_vi7uw"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bh4jb540el3x7" path="res://tiles/floor_grate.png" id="4_wh8n5"]
 [ext_resource type="Texture2D" uid="uid://4h6nm8gha3te" path="res://tiles/factory_wall.png" id="5_1v211"]
 [ext_resource type="Texture2D" uid="uid://cfjwshu0tbkmt" path="res://tiles/ceiling_auto.png" id="5_7vajj"]
+[ext_resource type="Texture2D" uid="uid://b6jjkeow5qcke" path="res://tiles/blood_splatter.png" id="5_62fpo"]
 [ext_resource type="Texture2D" uid="uid://coyoi6mcggisl" path="res://tiles/ceiling.png" id="6_g17hc"]
 [ext_resource type="Texture2D" uid="uid://bj0dte5ptnrlt" path="res://tiles/signs.png" id="8_4qsft"]
 [ext_resource type="Texture2D" uid="uid://3wef215h4ktc" path="res://tiles/locker.png" id="9_480q6"]
@@ -205,6 +206,57 @@ texture = ExtResource("4_mije8")
 1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:4/0/physics_layer_0/angular_velocity = 0.0
 1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -1, -8, -1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hh6bc"]
+texture = ExtResource("5_62fpo")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0 = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0 = 0
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_di80e"]
 texture = ExtResource("3_ghjw5")
@@ -1067,3 +1119,4 @@ sources/8 = SubResource("TileSetAtlasSource_qdikg")
 sources/9 = SubResource("TileSetAtlasSource_tdmph")
 sources/10 = SubResource("TileSetAtlasSource_v02gj")
 sources/11 = SubResource("TileSetAtlasSource_ld34l")
+sources/12 = SubResource("TileSetAtlasSource_hh6bc")

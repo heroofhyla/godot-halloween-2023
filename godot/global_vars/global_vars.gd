@@ -2,6 +2,7 @@ extends Node
 
 enum {NEVER_INTERACTED, POWER_OUT, POWER_RESTORED, GATE_OPENED}
 
+var moved_crate: bool
 var drink_count: int
 var has_west_hall_key: bool
 var has_locker_key: bool
@@ -15,6 +16,7 @@ var player:
 	get: return get_tree().get_nodes_in_group("player")[0]
 
 func reset():
+	moved_crate = false
 	drink_count = 0
 	has_west_hall_key = false
 	has_locker_key = false
