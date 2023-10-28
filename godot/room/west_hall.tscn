@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dji6hea1k8nvf"]
+[gd_scene load_steps=14 format=3 uid="uid://dji6hea1k8nvf"]
 
 [ext_resource type="PackedScene" uid="uid://d37bvh3xoepfd" path="res://room/room.tscn" id="1_oblwt"]
 [ext_resource type="PackedScene" uid="uid://c0tmw4il8es7e" path="res://interactable/interactable.tscn" id="2_bw1re"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://b3p7djvnmkynu" path="res://teleporter/teleporter.tscn" id="5_2j303"]
 [ext_resource type="PackedScene" uid="uid://bi3eifgwrb5rk" path="res://double_door/double_door.tscn" id="6_vrfxx"]
 [ext_resource type="Script" path="res://autoplay/autoplay.gd" id="7_6dw0r"]
+[ext_resource type="Script" path="res://spawn_blood_splatters.gd" id="8_pfnjl"]
+[ext_resource type="Texture2D" uid="uid://b6jjkeow5qcke" path="res://tiles/blood_splatter.png" id="9_yi2iv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v821k"]
 size = Vector2(23, 13)
@@ -145,7 +147,55 @@ z_index = 2
 position = Vector2(3, -65)
 shape = SubResource("RectangleShape2D_h56ry")
 
-[node name="Autoplay" type="Node" parent="." index="13"]
+[node name="BloodSpatters" type="Node" parent="." index="13"]
+script = ExtResource("8_pfnjl")
+
+[node name="Splatters" type="Node2D" parent="BloodSpatters" index="0"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="BloodSpatters/Splatters" index="0"]
+z_index = -1
+position = Vector2(277, 207)
+texture = ExtResource("9_yi2iv")
+region_enabled = true
+region_rect = Rect2(36, 2, 26, 30)
+
+[node name="Sprite2D2" type="Sprite2D" parent="BloodSpatters/Splatters" index="1"]
+z_index = -1
+position = Vector2(288, 91)
+texture = ExtResource("9_yi2iv")
+region_enabled = true
+region_rect = Rect2(15, 33, 18, 32)
+
+[node name="Sprite2D3" type="Sprite2D" parent="BloodSpatters/Splatters" index="2"]
+z_index = -1
+position = Vector2(278, 120)
+texture = ExtResource("9_yi2iv")
+region_enabled = true
+region_rect = Rect2(0, 47, 16, 16)
+
+[node name="Sprite2D4" type="Sprite2D" parent="BloodSpatters/Splatters" index="3"]
+z_index = -1
+position = Vector2(288, 149)
+texture = ExtResource("9_yi2iv")
+region_enabled = true
+region_rect = Rect2(0, 31, 16, 16)
+
+[node name="Sprite2D5" type="Sprite2D" parent="BloodSpatters/Splatters" index="4"]
+z_index = -1
+position = Vector2(226, 214)
+texture = ExtResource("9_yi2iv")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 16)
+
+[node name="Sprite2D6" type="Sprite2D" parent="BloodSpatters/Splatters" index="5"]
+z_index = -1
+position = Vector2(285, 177)
+texture = ExtResource("9_yi2iv")
+region_enabled = true
+region_rect = Rect2(17, 16, 14, 16)
+
+[node name="Autoplay" type="Node" parent="." index="14"]
 script = ExtResource("7_6dw0r")
 
 [node name="ReadableSign" type="Node" parent="Autoplay" index="0"]

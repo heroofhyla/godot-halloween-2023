@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c5pvubyr78tnt"]
+[gd_scene load_steps=27 format=3 uid="uid://c5pvubyr78tnt"]
 
 [ext_resource type="PackedScene" uid="uid://d37bvh3xoepfd" path="res://room/room.tscn" id="1_6viko"]
 [ext_resource type="Script" path="res://crate/crate_and_lifter.gd" id="2_qc0l4"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://crate/crate_controls.gd" id="7_otpwc"]
 [ext_resource type="Texture2D" uid="uid://ckrfge18infhd" path="res://control_panel.png" id="8_xpx7a"]
 [ext_resource type="PackedScene" uid="uid://8hpbn1d1vjmb" path="res://interactable/interact_hint.tscn" id="9_vyjfa"]
+[ext_resource type="Script" path="res://spawn_blood_splatters.gd" id="11_iv8gr"]
+[ext_resource type="Texture2D" uid="uid://b6jjkeow5qcke" path="res://tiles/blood_splatter.png" id="12_ch786"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ecif4"]
 size = Vector2(32, 32)
@@ -93,33 +95,6 @@ tracks/1/keys = {
 "values": [Vector2(19, -3), Vector2(15, -3)]
 }
 
-[sub_resource type="Animation" id="Animation_j2eie"]
-resource_name = "open_clamps"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Lifter/UpperShaft/LowerShaft/LeftClamp:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-22, -3), Vector2(-26, -3)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Lifter/UpperShaft/LowerShaft/RightClamp:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(15, -3), Vector2(19, -3)]
-}
-
 [sub_resource type="Animation" id="Animation_4bv4p"]
 resource_name = "extend_claw"
 tracks/0/type = "value"
@@ -133,21 +108,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 10), Vector2(0, 19)]
-}
-
-[sub_resource type="Animation" id="Animation_53avs"]
-resource_name = "retract_claw"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%Lifter/UpperShaft/LowerShaft:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 19), Vector2(0, 10)]
 }
 
 [sub_resource type="Animation" id="Animation_a0ksc"]
@@ -202,6 +162,48 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, -40), Vector2(0, -31)]
+}
+
+[sub_resource type="Animation" id="Animation_j2eie"]
+resource_name = "open_clamps"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lifter/UpperShaft/LowerShaft/LeftClamp:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-22, -3), Vector2(-26, -3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lifter/UpperShaft/LowerShaft/RightClamp:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(15, -3), Vector2(19, -3)]
+}
+
+[sub_resource type="Animation" id="Animation_53avs"]
+resource_name = "retract_claw"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Lifter/UpperShaft/LowerShaft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 19), Vector2(0, 10)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7knso"]
@@ -334,7 +336,55 @@ position = Vector2(0, 38)
 unique_name_in_owner = true
 position = Vector2(0, 94)
 
-[node name="Autoplay" type="Node" parent="." index="5"]
+[node name="BloodSpatters" type="Node" parent="." index="5"]
+script = ExtResource("11_iv8gr")
+
+[node name="Splatters" type="Node2D" parent="BloodSpatters" index="0"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="BloodSpatters/Splatters" index="0"]
+z_index = -1
+position = Vector2(583, 288)
+texture = ExtResource("12_ch786")
+region_enabled = true
+region_rect = Rect2(36, 2, 26, 30)
+
+[node name="Sprite2D2" type="Sprite2D" parent="BloodSpatters/Splatters" index="1"]
+z_index = -1
+position = Vector2(642, 327)
+texture = ExtResource("12_ch786")
+region_enabled = true
+region_rect = Rect2(15, 33, 18, 32)
+
+[node name="Sprite2D3" type="Sprite2D" parent="BloodSpatters/Splatters" index="2"]
+z_index = -1
+position = Vector2(624, 298)
+texture = ExtResource("12_ch786")
+region_enabled = true
+region_rect = Rect2(0, 47, 16, 16)
+
+[node name="Sprite2D4" type="Sprite2D" parent="BloodSpatters/Splatters" index="3"]
+z_index = -1
+position = Vector2(654, 372)
+texture = ExtResource("12_ch786")
+region_enabled = true
+region_rect = Rect2(0, 31, 16, 16)
+
+[node name="Sprite2D5" type="Sprite2D" parent="BloodSpatters/Splatters" index="4"]
+z_index = -1
+position = Vector2(632, 390)
+texture = ExtResource("12_ch786")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 16)
+
+[node name="Sprite2D6" type="Sprite2D" parent="BloodSpatters/Splatters" index="5"]
+z_index = -1
+position = Vector2(639, 412)
+texture = ExtResource("12_ch786")
+region_enabled = true
+region_rect = Rect2(17, 16, 14, 16)
+
+[node name="Autoplay" type="Node" parent="." index="6"]
 script = ExtResource("4_paq2k")
 
 [node name="ReadableSign" type="Node" parent="Autoplay" index="0"]
@@ -346,7 +396,7 @@ metal claw.", "Some sort of crane for
 moving things around?", "Whatever's in the box, it's
 probably not Morgan."])
 
-[node name="Teleporter" parent="." index="6" instance=ExtResource("6_i1224")]
+[node name="Teleporter" parent="." index="7" instance=ExtResource("6_i1224")]
 z_index = 2
 position = Vector2(896, 336)
 target_map = "res://room/conveyor_maze.tscn"
@@ -355,7 +405,7 @@ teleport_target = "SouthEastEntrance"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter" index="1"]
 shape = SubResource("RectangleShape2D_tq8s8")
 
-[node name="Teleporter2" parent="." index="7" instance=ExtResource("6_i1224")]
+[node name="Teleporter2" parent="." index="8" instance=ExtResource("6_i1224")]
 z_index = 2
 position = Vector2(728, 208)
 target_map = "res://room/conveyor_maze.tscn"
@@ -365,7 +415,7 @@ teleport_target = "SouthWestEntrance"
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_amiq4")
 
-[node name="Teleporter3" parent="." index="8" instance=ExtResource("6_i1224")]
+[node name="Teleporter3" parent="." index="9" instance=ExtResource("6_i1224")]
 z_index = 2
 position = Vector2(640, 464)
 target_map = "res://room/west_hall.tscn"

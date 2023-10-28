@@ -35,3 +35,4 @@ func _steps():
 		)
 		cutscene_set(%HugeCrate, "z_index", 0)
 		cutscene_set(GlobalVars, "moved_crate", true)
+   
